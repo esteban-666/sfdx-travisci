@@ -20,7 +20,6 @@ before_install:
 sfdx force:auth:jwt:grant --clientid 3MVG9LBJLApeX_PA5tVomzpRsGko8Rbi.d.CTl4ZthGqcFt8sd2OZBcO5kd54MJDkV6tA4E9jnwJHlwpctfl6 --username esteban@resourceful-goat-sxqr8i.com \
 --jwtkeyfile ~/Desktop/travisCI/cartificates/server.key --setdefaultdevhubusername
 -a HubOrg
-
 script:
 - sfdx force:org:create -v HubOrg -s -f config/project-scratch-def.json -a ciorg --wait 2
 - sfdx force:org:display -u ciorg
