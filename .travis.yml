@@ -20,7 +20,7 @@ before_install:
 - sfdx --version
 - sfdx plugins --core
 # - sfdx force:org:list
-- sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile server.key --username $USERNAME --setdefaultdevhubusername
+- sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile  --username $USERNAME --setdefaultdevhubusername
 # - sfdx force:auth:web:login -d -a DevHub
 
 
