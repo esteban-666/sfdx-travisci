@@ -11,14 +11,16 @@ before_install:
 - export SFDX_DOMAIN_RETRY=300
 - export SFDX_DISABLE_APP_HUB=true
 - export SFDX_LOG_LEVEL=DEBUG
-- npm install 8
+- npm install
+- nvm install
+- nvm use 8
 - mkdir sfdx
 - wget -qO- $URL | tar xJ -C sfdx --strip-components 1
 - "./sfdx/install"
 - export PATH=./sfdx/$(pwd):$PATH
 - sfdx --version
 - sfdx plugins --core
-- --loglevel debug
+- sfdx force:org:create --definitionfile config/project-scratch-def.json --loglevel debug --setalias my-scratch-org
 - sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile ~/assets/server.key.enc
   --username $USERNAME --setdefaultdevhubusername -a HubOrg
 script:
