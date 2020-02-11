@@ -11,13 +11,16 @@ before_install:
 - export SFDX_DOMAIN_RETRY=300
 - export SFDX_DISABLE_APP_HUB=true
 - export SFDX_LOG_LEVEL=DEBUG
+- npm install 8
 - mkdir sfdx
-- tar xJf sfdx-linux-amd64.tar.xz -C sfdx --strip-components 1
-- ./sfdx/install
+- wget -qO- $URL | tar xJ -C sfdx --strip-components 1
+- "./sfdx/install"
 - export PATH=./sfdx/$(pwd):$PATH
 - sfdx --version
 - sfdx plugins --core
-- force:source:push
+- --loglevel debug
+- sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile ~/assets/server.key.enc
+  --username $USERNAME --setdefaultdevhubusername -a HubOrg
 script:
 - sfdx force:org:create -v HubOrg -s -f config/project-scratch-def.json -a ciorg --wait
   2
