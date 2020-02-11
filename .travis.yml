@@ -19,8 +19,8 @@ before_install:
 - export PATH=./sfdx/$(pwd):$PATH
 - sfdx --version
 - sfdx plugins --core
-- openssl aes-256-cbc -k "$KEY" -in assets/server.key.enc -out assets/server.key -d
-- sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile keys/server.key --username $USERNAME --setdefaultdevhubusername -a HubOrg
+# - openssl aes-256-cbc -k "$KEY" -in assets/server.key.enc -out assets/server.key -d
+- sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile server.key --username $USERNAME --setdefaultdevhubusername -a HubOrg
 
 
 script:
