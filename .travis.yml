@@ -4,8 +4,8 @@ cache: false
 env:
 - URL=https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
 before_install:
-# - openssl aes-256-cbc -K $encrypted_7a6572ec0c84_key -iv $encrypted_7a6572ec0c84_iv
-#   -in assets/server.key.enc -out assets/server.key -d
+- openssl aes-256-cbc -K $encrypted_939c08394e3d_key -iv $encrypted_939c08394e3d_iv -in assets/server.key.enc -out assets/server.key -d
+- wget -qO- $URL | tar xJf -
 - export SFDX_AUTOUPDATE_DISABLE=false
 - export SFDX_USE_GENERIC_UNIX_KEYCHAIN=true
 - export SFDX_DOMAIN_RETRY=300
@@ -20,8 +20,8 @@ before_install:
 - sfdx --version
 - sfdx plugins --core
 # - sfdx force:org:list
-# - sfdx force:auth:jwt:grant --clientid ${CONSUMER_KEY} --username ${HUB_USERNAME} \ --jwtkeyfile ${JWT_KEY_FILE} --setdefaultdevhubusername
-- sfdx force:auth:web:login -d -a DevHub
+- sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile config/server.key --username $USERNAME --setdefaultdevhubusername -a HubOrg 
+# - sfdx force:auth:web:login -d -a DevHub
 
 script:
 - sfdx force:org:create -v HubOrg -s -f config/project-scratch-def.json -a ciorg --wait 2
