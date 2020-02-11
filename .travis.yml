@@ -19,7 +19,6 @@ before_install:
 - export PATH=./sfdx/$(pwd):$PATH
 - sfdx --version
 - sfdx plugins --core
-- sfdx force:org:create --definitionfile config/project-scratch-def.json --loglevel debug --setalias my-scratch-org
 - export SFDX_LOG_LEVEL=debug
 - sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile ~/assets/server.key.enc
   --username $USERNAME --setdefaultdevhubusername -a HubOrg
