@@ -20,7 +20,7 @@ before_install:
 - sfdx --version
 - sfdx plugins --core
 # - openssl aes-256-cbc -k "$KEY" -in assets/server.key.enc -out assets/server.key -d
-- sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile ~/Desktop/travisCI/certificates/server.key --username $USERNAME --setdefaultdevhubusername -a HubOrg
+- sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile  --username $USERNAME --setdefaultdevhubusername -a HubOrg
 
 
 script:
