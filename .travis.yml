@@ -19,7 +19,7 @@ before_install:
 - export PATH=./sfdx/$(pwd):$PATH
 - sfdx --version
 - sfdx plugins --core
-- sfdx force:org:list
+# - sfdx force:org:list
 # - sfdx force:auth:jwt:grant --clientid ${CONSUMER_KEY} --username ${HUB_USERNAME} \ --jwtkeyfile ${JWT_KEY_FILE} --setdefaultdevhubusername
 - sfdx force:auth:web:login -h && sfdx force:org:open -u DevHub
 
